@@ -34,3 +34,24 @@ user.is_authenticated  :  to check the user is logged in or not
 @login_required : to control a router to open only after authentication
 LOGIN_REDIRECT_URL='blog_home'
 LOGIN_URL='login' 
+
+# profile
+MEDIA_ROOT=os.path.join(BASE_DIR,'media')
+MEDIA_URL='/media/'
+
+from django.db.models.signals import post_save
+from django.contrib.auth.models import User
+from django.dispatch import receiver
+from .models import Profile
+
+@receiver(post_save,sender=User)
+def create_profile(sender,instance,created,**kwargs):
+    if created:
+        Profile.objects.create(user=instance)
+
+@receiver(post_save,sender=User)
+def save_profile(sender,instance,**kwargs):
+    instance.profile.save()
+
+def ready(self):
+        import users.signals
