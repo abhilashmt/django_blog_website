@@ -1,5 +1,9 @@
 # django_blog_website
 
+Create views
+Add template
+Link url
+
 python -m django --version
 django-admin : to list the available django soft commands
 django-admin startproject name_of_project
@@ -21,3 +25,9 @@ user.id
 post_1=Posts(title='title',content='content',author=user)
 user.posts_set
 user.posts_set.create(title='title',content='content')
+
+# User creation
+Need to add a csrf_token when creating a form
+from django.contrib import messages can be used to create flash messages
+To create new fields in the form we can create a new form.py and inherit the class UserCreationForm to it
+ 
