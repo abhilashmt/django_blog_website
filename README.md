@@ -30,4 +30,7 @@ user.posts_set.create(title='title',content='content')
 Need to add a csrf_token when creating a form
 from django.contrib import messages can be used to create flash messages
 To create new fields in the form we can create a new form.py and inherit the class UserCreationForm to it
- 
+user.is_authenticated  :  to check the user is logged in or not
+@login_required : to control a router to open only after authentication
+LOGIN_REDIRECT_URL='blog_home'
+LOGIN_URL='login' 
